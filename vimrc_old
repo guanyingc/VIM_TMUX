@@ -1,0 +1,175 @@
+" Vim configuration
+
+""""""""""""""" general settings  """""""""""""""
+set showcmd
+set completeopt=preview,menu 
+set nocompatible
+set magic                   " open regular operation
+set clipboard+=unnamed 
+set nobackup
+set autowrite
+set noeb " no error beeze
+set confirm " show promt 
+set history=1000 "hitory record
+set noswapfile
+set gdefault
+set viminfo+=!
+set iskeyword+=_,$,@,%,#,-
+set linespace=0
+set whichwrap+=<,>,h,l
+
+" GUI status, tools, menu bar
+colorscheme ron
+set cursorline              " emphasize current line
+set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}   "状态行显示的内容  
+set guioptions+=T           " hide tool bar
+set guioptions+=m           " hide menu bar
+set wildmenu
+set cmdheight=1 " height of the command window
+set number " line number
+set fillchars=vert:\ ,stl:\ ,stlnc:\
+set laststatus=2
+set scrolloff=3
+set showmatch
+set matchtime=1
+set report=0
+
+"syntax
+set syntax=on
+set syntax=enable
+
+" fold and unfold
+set foldenable      " 允许折叠  
+set foldmethod=manual   " 手动折叠 
+set foldmethod=indent 
+set foldcolumn=0
+set foldlevel=3 
+
+" indent
+set autoindent
+set cindent
+set smartindent
+set backspace=2
+
+
+" search and replace
+set ignorecase smartcase
+set hlsearch
+set incsearch
+
+"tab
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set noexpandtab
+set smarttab
+
+" language
+set enc=utf-8
+set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936
+set langmenu=zh_CN.UTF-8
+set helplang=cn
+
+" mouse setting
+set mouse=a
+set selection=exclusive
+set selectmode=mouse,key
+
+
+" autocmd and file type
+autocmd BufNewFile,BufRead *.md set filetype=markdown "Markdown to HTML
+filetype on
+filetype plugin on
+filetype indent on
+au BufRead,BufNewFile *  setfiletype txt
+
+""""""""""""""" mapping """""""""""""""""""
+map <Space> i<Space><ESC>
+map <Enter> o<ESC>
+map <S-Enter> O<ESC>
+noremap! <C-F> <ESC> li
+" F2 save
+noremap <F2> <Esc>:w<CR>
+inoremap <F2> <Esc>:w<CR>a
+
+" auto complete
+:inoremap ( ()<ESC>i
+:inoremap ) <c-r>=ClosePair(')')<CR>
+:inoremap { {}<ESC>i
+:inoremap } <c-r>=ClosePair('}')<CR>
+
+:inoremap [ []<ESC>i
+:inoremap ] <c-r>=ClosePair(']')<CR>
+":inoremap " ""<ESC>i
+":inoremap ' ''<ESC>i
+function! ClosePair(char)
+	if getline('.')[col('.') - 1] == a:char
+		return "\<Right>"
+	else
+		return a:char
+	endif
+endfunction
+
+"""""""""""" Header for new file """""""""""
+".c, .h, .sh, .java, .py
+autocmd BufNewFile *.cpp,*.[ch],*.sh,*.java,*.py,Makefile exec ":call SetTitle()" 
+func SetTitle() 
+	if &filetype == 'sh' 
+		call setline(1,"\#########################################################################") 
+		call append(line("."), "\# File Name: ".expand("%")) 
+		call append(line(".")+1, "\# Author: GoYchen") 
+		call append(line(".")+2, "\# mail: GoYchen@foxmail.com") 
+		call append(line(".")+3, "\# Created Time: ".strftime("%c")) 
+		call append(line(".")+4, "\#########################################################################") 
+		call append(line(".")+5, "\#!/bin/bash") 
+		call append(line(".")+6, "") 
+	elseif &filetype == 'make'
+		call setline(1,"\#########################################################################") 
+		call append(line("."), "\# File Name: ".expand("%")) 
+		call append(line(".")+1, "\# Author: GoYchen") 
+		call append(line(".")+2, "\# mail: GoYchen@foxmail.com") 
+		call append(line(".")+3, "\# Created Time: ".strftime("%c")) 
+		call append(line(".")+4, "\#########################################################################") 
+		call append(line(".")+5, "\CC = g++")
+		call append(line(".")+6, "\CFLAGS = ")
+		call append(line(".")+7, "\EXE = ")
+		call append(line(".")+8, "\SOURCE = ")
+		call append(line(".")+9, "")
+		call append(line(".")+10, "\Build: compile run")
+		call append(line(".")+11, "compile:")
+		call append(line(".")+12, "\	$(CC) -g -o $(EXE) $(SOURCE) $(CFLAGS)")
+		call append(line(".")+13, "run:")
+		call append(line(".")+14, "\	./$(EXE)")
+		call append(line(".")+15, "clean:")
+		call append(line(".")+16, "\	rm -f *.o")
+		call append(line(".")+17, "debug:")
+		call append(line(".")+18, "\	gdb $(EXE)")
+	elseif &filetype == 'python'
+		call setline(1,"'''") 
+		call append(line("."), "\	> File Name: ".expand("%")) 
+		call append(line(".")+1, "\	> Author: GoYchen") 
+		call append(line(".")+2, "\	> mail: GoYchen@foxmail.com") 
+		call append(line(".")+3, "\	> Created Time: ".strftime("%c")) 
+		call append(line(".")+4, "'''") 
+	else
+		:inoremap { {<CR>}<ESC>O
+		:inoremap } <c-r>=ClosePair('}')<CR>
+		call setline(1, "/*************************************************************************") 
+		call append(line("."), "	> File Name: ".expand("%")) 
+		call append(line(".")+1, "	> Author: GoYchen") 
+		call append(line(".")+2, "	> Mail: GoYchen@foxmail.com ") 
+		call append(line(".")+3, "	> Created Time: ".strftime("%c")) 
+		call append(line(".")+4, " ************************************************************************/") 
+		call append(line(".")+5, "")
+	endif
+	if &filetype == 'cpp'
+		call append(line(".")+6, "#include <iostream>")
+		call append(line(".")+7, "using namespace std;")
+		call append(line(".")+8, "")
+	endif
+	if &filetype == 'c'
+		call append(line(".")+6, "#include <stdio.h>")
+		call append(line(".")+7, "")
+	endif
+	autocmd BufNewFile * normal G
+endfunc 
