@@ -20,13 +20,13 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'majutsushi/tagbar'
 Plugin 'morhetz/gruvbox'
-
-" Plugin for snipmate
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
-Plugin 'honza/vim-snippets' " Optional:
 
+" Optional:
+ Plugin 'GoYchen/vim-snippets'
+" Plugin 'honza/vim-snippets'
 " Plugin 'vim-scripts/cscope.vim'
 "Plugin 'junegunn/seoul256.vim'
 "" plugin from http://vim-scripts.org/vim/scripts.html
@@ -57,12 +57,7 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
-
-" Configuration for Plugin: NERD tree
-"" Automatically open a NERDTree if no files where specified
-" autocmd vimenter * if !argc() | NERDTree | endif
-" Close vim if the only window left open is a NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+" NERD tree
 let NERDChristmasTree=0
 let NERDTreeWinSize=35
 let NERDTreeChDirMode=2
@@ -71,12 +66,16 @@ let NERDTreeShowBookmarks=1
 let NERDTreeWinPos="left"
 nmap <F3> :NERDTreeToggle<cr>
 
-" Configuration for Plugin: Tagbar
+" Tagbar
 let g:tagbar_width=35
 let g:tagbar_autofocus=1
 nmap <F4> :TagbarToggle<CR>
+" Automatically open a NERDTree if no files where specified
+" autocmd vimenter * if !argc() | NERDTree | endif
+" Close vim if the only window left open is a NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
-" Configuration for Plugin: Ctrlp
+" ctrap
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.png,*.jpg,*.jpeg,*.gif " MacOSX/Linux
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 
@@ -92,6 +91,26 @@ endif
 
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 map <C-n> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+
+" cscope
+nnoremap <leader>fa :call cscope#findInteractive(expand('<cword>'))<CR>
+nnoremap <leader>l :call ToggleLocationList()<CR>
+" s: Find this C symbol
+nnoremap  <leader>fs :call cscope#find('s', expand('<cword>'))<CR>
+" g: Find this definition
+nnoremap  <leader>fg :call cscope#find('g', expand('<cword>'))<CR>
+" d: Find functions called by this function
+nnoremap  <leader>fd :call cscope#find('d', expand('<cword>'))<CR>
+" c: Find functions calling this function
+nnoremap  <leader>fc :call cscope#find('c', expand('<cword>'))<CR>
+" t: Find this text string
+"nnoremap  <leader>ft :call cscope#find('t', expand('<cword>'))<CR>
+"" e: Find this egrep pattern
+"nnoremap  <leader>fe :call cscope#find('e', expand('<cword>'))<CR>
+" f: Find this file
+nnoremap  <leader>ff :call cscope#find('f', expand('<cword>'))<CR>
+" i: Find files #including this file
+nnoremap  <leader>fi :call cscope#find('i', expand('<cword>'))<CR>
 
 """"""""""""""" general settings  """""""""""""""
 set showcmd
@@ -112,19 +131,22 @@ set linespace=0
 set whichwrap+=<,>,h,l
 
 " GUI status, tools, menu bar
+""syntax
 set syntax=on
+
 let g:gruvbox_contrast_dark='hard'
-colorscheme gruvbox 
+colorscheme gruvbox "ron
 let NVIM_TUI_ENABLE_TRUE_COLOR=1
 set cursorline              " emphasize current line
 set statusline+=%{fugitive#statusline()} "  Git Hotness
-set statusline+=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}   "contents in status bar  
+set statusline+=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}   "状态行显示的内容  
 set relativenumber
 set number " line number
 set laststatus=2 " Always display the status line
 
 " fold and unfold
-set foldenable      
+set foldenable      " 允许折叠  
+"set foldmethod=manual   " 手动折叠 
 set foldmethod=indent 
 set foldcolumn=0
 set foldlevel=3 
@@ -134,6 +156,7 @@ set autoindent
 set cindent
 set smartindent
 set backspace=2
+
 
 " search and replace
 set ignorecase smartcase
@@ -155,7 +178,7 @@ filetype indent on
 au BufRead,BufNewFile *  setfiletype txt
 
 """"""""""""""" mapping """""""""""""""""""
-" Remap Window Navigation command
+" window command
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
@@ -165,15 +188,14 @@ map <Space> i<Space><ESC>
 map <Enter> o<ESC>
 
 noremap! <C-F> <ESC> li
-
-" Map F2 to save
+" F2 save
 noremap <F2> <Esc>:w<CR>
 inoremap <F2> <Esc>:w<CR>a
 
 " auto complete
 :inoremap ( ()<ESC>i
 :inoremap ) <c-r>=ClosePair(')')<CR>
-:inoremap { {}<ESC>i
+":inoremap { {}<ESC>i
 :inoremap } <c-r>=ClosePair('}')<CR>
 
 :inoremap [ []<ESC>i
@@ -187,19 +209,21 @@ function! ClosePair(char)
 		return a:char
 	endif
 endfunction
-
-" Map F5 for adding Header and Copywrite
+"进行版权声明的设置
+"添加或更新头
 map <F5> :call TitleDet()<cr>'s
 function AddTitle()
     call append(0,"/*=============================================================================")
-    call append(2,"# Author: Chen Guanying - GoYchen@foxmail.com")
+    call append(1,"# Copyright (c) 2016 sensetime.com, Inc. All Rights Reserved")
+
+    call append(2,"# Author: Chen Guanying - chengunaying@sensetim.com")
     call append(3,"# Last modified: ".strftime("%Y-%m-%d %H:%M"))
     call append(4,"# Filename: ".expand("%:t"))
     call append(5,"# Description: ")
     call append(6,"=============================================================================*/")
     echohl WarningMsg | echo "Successful in adding the copyright." | echohl None
 endf
-" Update the modified time
+"更新最近修改时间和文件名
 function UpdateTitle()
     normal m'
     execute '/# *Last modified:/s@:.*$@\=strftime(":\t%Y-%m-%d %H:%M")@'
@@ -210,9 +234,9 @@ function UpdateTitle()
     normal 'k
     echohl WarningMsg | echo "Successful in updating the copy right." | echohl None
 endfunction
-" Check whether if the first 10 lines of the file contain the words "Last modified"
-" If not exists, add the file header
-" If exists, update the modified time 
+"判断前10行代码里面，是否有Last modified这个单词，
+"如果没有的话，代表没有添加过作者信息，需要新添加；
+"如果有的话，那么只需要更新即可
 function TitleDet()
     let n=1
     "默认为添加
