@@ -23,7 +23,7 @@ Plugin 'morhetz/gruvbox'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
-
+Plugin 'terryma/vim-smooth-scroll'
 " Optional:
  Plugin 'GoYchen/vim-snippets'
 " Plugin 'honza/vim-snippets'
@@ -170,6 +170,9 @@ set shiftwidth=4
 set noexpandtab
 set smarttab
 
+"split 
+set splitbelow
+set splitright
 " autocmd and file type
 autocmd BufNewFile,BufRead *.md set filetype=markdown "Markdown to HTML
 filetype on
@@ -206,6 +209,12 @@ inoremap <F2> <Esc>:w<CR>a
 :inoremap ] <c-r>=ClosePair(']')<CR>
 ":inoremap " ""<ESC>i
 ":inoremap ' ''<ESC>i
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
+noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
+
+
 function! ClosePair(char)
 	if getline('.')[col('.') - 1] == a:char
 		return "\<Right>"
@@ -213,6 +222,7 @@ function! ClosePair(char)
 		return a:char
 	endif
 endfunction
+
 
 """""""""""" Show number in tabline""""""""""""""'
 set tabline=%!MyTabLine()  " custom tab pages line
