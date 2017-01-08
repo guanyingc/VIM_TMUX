@@ -301,13 +301,12 @@ endfunction
 map <F5> :call TitleDet()<cr>'s
 function AddTitle()
     call append(0,"/*=============================================================================")
-    call append(1,"# Copyright (c) 2016 sensetime.com, Inc. All Rights Reserved")
-
-    call append(2,"# Author: Chen Guanying - chengunaying@sensetim.com")
-    call append(3,"# Last modified: ".strftime("%Y-%m-%d %H:%M"))
-    call append(4,"# Filename: ".expand("%:t"))
-    call append(5,"# Description: ")
-    call append(6,"=============================================================================*/")
+    "call append(1,"# Copyright (c) 2017 Chen Guanying. All Rights Reserved")
+    call append(1,"# Author: Chen Guanying - GoYchen@foxmail.com")
+    call append(2,"# Last modified: ".strftime("%Y-%m-%d %H:%M"))
+    call append(3,"# Filename: ".expand("%:t"))
+    call append(4,"# Description: ")
+    call append(5,"=============================================================================*/")
     echohl WarningMsg | echo "Successful in adding the copyright." | echohl None
 endf
 "Upate time
