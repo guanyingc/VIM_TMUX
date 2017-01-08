@@ -226,7 +226,7 @@ endfunction
 
 """""""""""" Show number in tabline""""""""""""""'
 set tabline=%!MyTabLine()  " custom tab pages line
-function MyTabLine()
+function! MyTabLine()
         let s = '' " complete tabline goes here
         " loop through each tab page
         for t in range(tabpagenr('$'))
@@ -299,7 +299,7 @@ endfunction
 
 """"""""""""" Copyright setting"""""""""""
 map <F5> :call TitleDet()<cr>'s
-function AddTitle()
+function! AddTitle()
     call append(0,"/*=============================================================================")
     "call append(1,"# Copyright (c) 2017 Chen Guanying. All Rights Reserved")
     call append(1,"# Author: Chen Guanying - GoYchen@foxmail.com")
@@ -310,7 +310,7 @@ function AddTitle()
     echohl WarningMsg | echo "Successful in adding the copyright." | echohl None
 endf
 "Upate time
-function UpdateTitle()
+function! UpdateTitle()
     normal m'
     execute '/# *Last modified:/s@:.*$@\=strftime(":\t%Y-%m-%d %H:%M")@'
     normal ''
@@ -320,7 +320,7 @@ function UpdateTitle()
     normal 'k
     echohl WarningMsg | echo "Successful in updating the copy right." | echohl None
 endfunction
-function TitleDet()
+function! TitleDet()
     let n=1
     "默认为添加
     while n < 10
