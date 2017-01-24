@@ -20,10 +20,10 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'majutsushi/tagbar'
 Plugin 'morhetz/gruvbox'
-"Plugin 'MarcWeber/vim-addon-mw-utils'
-"Plugin 'tomtom/tlib_vim'
-"Plugin 'garbas/vim-snipmate'
-Plugin 'SirVer/ultisnips'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+" Plugin 'SirVer/ultisnips'
 Plugin 'GoYchen/vim-snippets'
 
 Plugin 'terryma/vim-smooth-scroll'
@@ -40,10 +40,10 @@ filetype plugin indent on    " required
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 
 """""" Plugin Installation"""""""
-  " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-    let g:UltiSnipsExpandTrigger="<tab>"
-    let g:UltiSnipsJumpForwardTrigger="<c-b>"
-    let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+  "" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+  "  let g:UltiSnipsExpandTrigger="<tab>"
+  "  let g:UltiSnipsJumpForwardTrigger="<c-b>"
+  "  let g:UltiSnipsJumpBackwardTrigger="<c-z>"
   
   " autoHEADER
     let g:autoHEADER_auto_enable=0
@@ -151,7 +151,7 @@ filetype plugin indent on    " required
     set tabstop=4
     set softtabstop=4
     set shiftwidth=4
-    set noexpandtab
+    set expandtab
     set smarttab
   "split 
 	set splitbelow
