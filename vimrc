@@ -56,6 +56,7 @@ filetype plugin indent on    " required
     let NERDTreeIgnore=['\~$', '\.pyc$', '\.swp$']
     let NERDTreeShowBookmarks=1
     let NERDTreeWinPos="left"
+    set encoding=utf-8
     nmap <F3> :NERDTreeToggle<cr>
   
   " Tagbar
