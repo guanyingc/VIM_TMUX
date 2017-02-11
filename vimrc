@@ -44,7 +44,8 @@ filetype plugin indent on    " required
   "  let g:UltiSnipsExpandTrigger="<tab>"
   "  let g:UltiSnipsJumpForwardTrigger="<c-b>"
   "  let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-  
+  " Fugitive.vim
+    set diffopt+=vertical
   " autoHEADER
     let g:autoHEADER_auto_enable=0
     let g:autoHEADER_default_author='Chen Guanying (GoYchen@foxmail.com)'
