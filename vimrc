@@ -25,7 +25,7 @@ Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
 " Plugin 'SirVer/ultisnips'
 Plugin 'GoYchen/vim-snippets'
-
+Plugin 'tpope/vim-unimpaired'
 Plugin 'terryma/vim-smooth-scroll'
 Plugin 'shanzi/autoHEADER'
 " Plugin 'honza/vim-snippets'
