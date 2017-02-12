@@ -44,8 +44,18 @@ filetype plugin indent on    " required
   "  let g:UltiSnipsExpandTrigger="<tab>"
   "  let g:UltiSnipsJumpForwardTrigger="<c-b>"
   "  let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+  
   " Fugitive.vim
     set diffopt+=vertical
+    autocmd BufReadPost fugitive://* set bufhidden=delete
+    " If doing a diff. Upon writing changes to file, automatically update the
+    " differences
+    autocmd BufWritePost * if &diff == 1 | diffupdate | endif
+    autocmd User fugitive 
+      \ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
+      \   nnoremap <buffer> .. :edit %:h<CR> |
+      \ endif
+
   " autoHEADER
     let g:autoHEADER_auto_enable=0
     let g:autoHEADER_default_author='Chen Guanying (GoYchen@foxmail.com)'
