@@ -1,12 +1,18 @@
 ## Confiugration of VIM and TMUX
 
+### Lastes
+0. Update to Solarized theme
+
 VIM and TMUX are two of the most helpful tools in Linux/Mac. Combining VIM and Tmux, you can transform your terminal into a powerful development tools.
 ![](example.png)
+
 ### Clone this Repository
 ```
 git clone https://github.com/GoYchen/VIM_TMUX.git
 ```
+
 ### VIM 
+
 #### Configuration for VIM
 0. Install Vundle to manage the plugins
 ```
@@ -26,6 +32,24 @@ vim ~/.vimrc
 Vim will automatically install the plugins.
 
 0. Then you can use VIM to edit your files.
+
+### Configuring solarized colorscheme in gnome terminal, tmux and vim: [Stack Overflow](http://stackoverflow.com/questions/23118916/configuring-solarized-colorscheme-in-gnome-terminal-tmux-and-vim)
+0. Install gnome solarized colorscheme. You can get it from https://github.com/sigurdga/gnome-terminal-colors-solarized.
+After intallatin, add this code in  `.bashrc`
+
+ ```
+if [ -f ~/.dir_colors/dircolors ]
+    then eval `dircolors ~/.dir_colors/dircolors`
+fi
+```
+0. Install solarized colorscheme for vim. You can get it from https://github.com/altercation/vim-colors-solarized. In .vimrc you should add following settings:
+
+ ```
+set t_Co=256
+set background=dark
+colorscheme solarized
+```
+0. Add `alias tmux='tmux -2'` in `.bashrc`
 
 #### Some Notes on the plugins and configuration of VIM
 0. Color Scheme: gruvbox
