@@ -20,6 +20,7 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'majutsushi/tagbar'
 Plugin 'morhetz/gruvbox'
+Bundle 'altercation/vim-colors-solarized'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
@@ -133,10 +134,13 @@ filetype plugin indent on    " required
   "" syntax
     syntax on
     let g:tex_flavor = "latex"
-  "" theme
-    let g:gruvbox_contrast_dark='hard'
-    colorscheme gruvbox "ron
-    let NVIM_TUI_ENABLE_TRUE_COLOR=1
+  "" theme: solarized options 
+  let g:solarized_termcolors=256 " For Ubuntu
+  set t_Co=256  " For Ubuntu
+  set background=dark
+  let g:solarized_visibility = "high"
+  let g:solarized_contrast = "high"
+  colorscheme solarized
   "" GUI status
     set cursorline              " emphasize current line
     set statusline+=%{fugitive#statusline()} "  Git Hotness
