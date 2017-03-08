@@ -51,6 +51,14 @@ colorscheme solarized
 ```
 0. Add `alias tmux='tmux -2'` in `.bashrc`
 
+### For Mac User
+0. VIM: Comment out two lines of code in `vimrc`
+```
+  "let g:solarized_termcolors=256 " For Ubuntu, please comment out in Mac
+  "set t_Co=256  " For Ubuntu, please comment out in Mac
+```
+0. TMUX: use `tmux.config_mac` instead
+
 #### Some Notes on the plugins and configuration of VIM
 0. Color Scheme: gruvbox
 gruvbox is heavily inspired by badwolf, jellybeans and solarized. Designed as a bright theme with pastel 'retro groove' colors and light/dark mode switching in the way of solarized. The main focus when developing gruvbox is to keep colors easily distinguishable, contrast enough and still pleasant for the eyes.
