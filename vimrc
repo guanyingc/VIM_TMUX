@@ -131,7 +131,7 @@ filetype plugin indent on    " required
   set whichwrap+=<,>,h,l
   " GUI status, tools, menu bar
   "" syntax
-    set syntax=on
+    syntax on
     let g:tex_flavor = "latex"
   "" theme
     let g:gruvbox_contrast_dark='hard'
