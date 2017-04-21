@@ -135,8 +135,8 @@ filetype plugin indent on    " required
     syntax on
     let g:tex_flavor = "latex"
   "" theme: solarized options 
-  let g:solarized_termcolors=256 " For Ubuntu
-  set t_Co=256  " For Ubuntu
+  let g:solarized_termcolors=16 " For Ubuntu
+  set t_Co=16  " For Ubuntu
   set background=dark
   let g:solarized_visibility = "high"
   let g:solarized_contrast = "high"
