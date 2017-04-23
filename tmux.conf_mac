@@ -32,7 +32,8 @@ bind r source ~/.tmux.conf \; display "Configuration reloaded!"
 
 # For copy and paste between iterm2, tmux and vim
 # Copy-paste integration
-set-option -g default-command "reattach-to-user-namespace -l bash"
+set-option -g default-command "reattach-to-user-namespace -l zsh"
+#set-option -g default-shell /bin/zsh
 # Use vim keybindings in copy mode
 setw -g mode-keys vi
 # Setup 'v' to begin selection as in Vim
@@ -45,4 +46,7 @@ bind-key -t vi-copy Enter copy-pipe "reattach-to-user-namespace pbcopy"
 bind ] run "reattach-to-user-namespace pbpaste | tmux load-buffer - && tmux paste-buffer"
 
 # For correct display in tmux
-set -g default-terminal "xterm-256color"
+
+bind '"' split-window -c "#{pane_current_path}"
+bind % split-window -h -c "#{pane_current_path}"
+bind c new-window -c "#{pane_current_path}"
