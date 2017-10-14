@@ -14,23 +14,32 @@ filetype off                  " required
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'majutsushi/tagbar'
-Plugin 'morhetz/gruvbox'
-Bundle 'altercation/vim-colors-solarized'
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
-Plugin 'garbas/vim-snipmate'
-" Plugin 'SirVer/ultisnips'
-Plugin 'GoYchen/vim-snippets'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'terryma/vim-smooth-scroll'
-Plugin 'shanzi/autoHEADER'
-" Plugin 'honza/vim-snippets'
-" Plugin 'vim-scripts/cscope.vim'
+" Plugin Manager
+    Plugin 'VundleVim/Vundle.vim'
+" For Color Theme
+    "Plugin 'morhetz/gruvbox'
+    Bundle 'altercation/vim-colors-solarized'
+" For Git
+    Plugin 'tpope/vim-fugitive'
+" For Navigation / Code Searching between files
+    Plugin 'ctrlpvim/ctrlp.vim'
+    Plugin 'scrooloose/nerdtree'
+    Plugin 'majutsushi/tagbar'
+    Plugin 'terryma/vim-smooth-scroll'
+" For Code Completion
+    "" For Vim-snippet
+    Plugin 'MarcWeber/vim-addon-mw-utils'
+    Plugin 'tomtom/tlib_vim'
+    Plugin 'garbas/vim-snipmate'
+    Plugin 'GoYchen/vim-snippets'
+    " Plugin 'SirVer/ultisnips'
+    " Plugin 'honza/vim-snippets'
+    " Plugin 'vim-scripts/cscope.vim'
+    "" For Bracket Completion
+    Plugin 'jiangmiao/auto-pairs'
+" For Handy Shortcut
+    Plugin 'tpope/vim-unimpaired'
+    Plugin 'shanzi/autoHEADER'
 call vundle#end()            " required
 filetype plugin indent on    " required
 "filetype plugin on
@@ -194,13 +203,13 @@ filetype plugin indent on    " required
   noremap <F2> <Esc>:w<CR>
   inoremap <F2> <Esc>:w<CR>a
   " auto complete
-  :inoremap ( ()<ESC>i
-  :inoremap ) <c-r>=ClosePair(')')<CR>
-  ":inoremap { {}<ESC>i
-  :inoremap } <c-r>=ClosePair('}')<CR>
-  
-  :inoremap [ []<ESC>i
-  :inoremap ] <c-r>=ClosePair(']')<CR>
+  ":inoremap ( ()<ESC>i
+  ":inoremap ) <c-r>=ClosePair(')')<CR>
+  "":inoremap { {}<ESC>i
+  ":inoremap } <c-r>=ClosePair('}')<CR>
+  "
+  ":inoremap [ []<ESC>i
+  ":inoremap ] <c-r>=ClosePair(']')<CR>
   ":inoremap " ""<ESC>i
   ":inoremap ' ''<ESC>i
   " Smooth scoll
