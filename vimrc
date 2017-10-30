@@ -183,6 +183,10 @@ filetype plugin indent on    " required
 	set splitright
   " autocmd and file type
   autocmd BufNewFile,BufRead *.md set filetype=markdown "Markdown to HTML
+  autocmd BufNewFile,BufRead *.md setlocal spell
+  autocmd BufNewFile,BufRead *.txt setlocal spell
+  autocmd BufNewFile,BufRead *.tex setlocal spell
+  autocmd BufNewFile,BufRead GITCOMMIT setlocal spell
   filetype on
   filetype plugin on
   filetype indent on
