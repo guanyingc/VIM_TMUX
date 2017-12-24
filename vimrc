@@ -206,6 +206,7 @@ filetype plugin indent on    " required
   " F2 save
   noremap <F2> <Esc>:w<CR>
   inoremap <F2> <Esc>:w<CR>a
+  nnoremap gr :Ggrep <cword> <CR>
   " auto complete
   ":inoremap ( ()<ESC>i
   ":inoremap ) <c-r>=ClosePair(')')<CR>
