@@ -61,10 +61,10 @@ filetype plugin indent on    " required
     nmap ,e :TagbarToggle<CR>
     autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
   
-  " ctrap
+  " ctrlp
     set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.png,*.jpg,*.jpeg,*.gif " MacOSX/Linux
     let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-    
+    nmap ,r :CtrlPClearAllCaches<cr>
     if executable('ag')
       " Use Ag over Grep
       set grepprg=ag\ --nogroup\ --nocolor
