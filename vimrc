@@ -58,7 +58,7 @@ filetype plugin indent on    " required
   " Tagbar
     let g:tagbar_width=35
     let g:tagbar_autofocus=1
-    nmap ,t :TagbarToggle<CR>
+    nmap ,e :TagbarToggle<CR>
     autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
   
   " ctrap
