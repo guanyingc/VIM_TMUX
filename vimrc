@@ -1,60 +1,35 @@
 "--------------------------------------------------------------------------------
-
-"     File Name           :     /home/gein/.vimrc
+"     File Name           :     .vimrc
 "     Created By          :     Chen Guanying (GoYchen@foxmail.com)
-"     Creation Date       :     [2017-01-08 11:45]
-"     Last Modified       :     [2017-01-08 12:20]
+"     Creation Date       :     [2017-01-07 17:39]
+"     Last Modified       :     [2018-01-07 19:59]
 "     Description         :      
 "--------------------------------------------------------------------------------
 " Vim configuration
-
-set nocompatible              " be iMproved, required
-filetype off                  " required
+set nocompatible            
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" Plugin Manager
-    Plugin 'VundleVim/Vundle.vim'
-" For Color Theme
-    "Plugin 'morhetz/gruvbox'
+    Plugin 'VundleVim/Vundle.vim' " Plugin Manager
     Bundle 'altercation/vim-colors-solarized'
-" For Git
-    Plugin 'tpope/vim-fugitive'
-" For Navigation / Code Searching between files
-    Plugin 'ctrlpvim/ctrlp.vim'
+    Plugin 'tpope/vim-fugitive' " For Git
+    Plugin 'ctrlpvim/ctrlp.vim' " For Navigation / Code Searching between files
     Plugin 'scrooloose/nerdtree'
     Plugin 'majutsushi/tagbar'
     Plugin 'terryma/vim-smooth-scroll'
-" For Code Completion
-    "" For Vim-snippet
-    Plugin 'MarcWeber/vim-addon-mw-utils'
+    Plugin 'MarcWeber/vim-addon-mw-utils' " For Vim-snippet
     Plugin 'tomtom/tlib_vim'
     Plugin 'garbas/vim-snipmate'
     Plugin 'GoYchen/vim-snippets'
-    " Plugin 'SirVer/ultisnips'
-    " Plugin 'honza/vim-snippets'
-    " Plugin 'vim-scripts/cscope.vim'
-    "" For Bracket Completion
-    Plugin 'jiangmiao/auto-pairs'
-" For Handy Shortcut
-    Plugin 'tpope/vim-unimpaired'
+    Plugin 'jiangmiao/auto-pairs' " For Bracket Completion
+    Plugin 'tpope/vim-unimpaired' " For Handy Shortcut
     Plugin 'shanzi/autoHEADER'
 call vundle#end()            " required
 filetype plugin indent on    " required
-"filetype plugin on
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+" :PluginList  :PluginInstall :PluginSearch foo  :PluginClean
 
-"""""" Plugin Installation"""""""
-  "" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-  "  let g:UltiSnipsExpandTrigger="<tab>"
-  "  let g:UltiSnipsJumpForwardTrigger="<c-b>"
-  "  let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-  
+"""""" Plugin Configuration"""""""
   " Fugitive.vim
     set diffopt+=vertical
     autocmd BufReadPost fugitive://* set bufhidden=delete
@@ -78,12 +53,12 @@ filetype plugin indent on    " required
     let NERDTreeShowBookmarks=1
     let NERDTreeWinPos="left"
     set encoding=utf-8
-    nmap <F3> :NERDTreeToggle<cr>
+    nmap ,d :NERDTreeToggle<cr>
   
   " Tagbar
     let g:tagbar_width=35
     let g:tagbar_autofocus=1
-    nmap <F4> :TagbarToggle<CR>
+    nmap ,t :TagbarToggle<CR>
     autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
   
   " ctrap
@@ -99,28 +74,14 @@ filetype plugin indent on    " required
       let g:ctrlp_use_caching = 0
       let g:ctrlp_working_path_mode = 'ra'
     endif
-    map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
-    map <C-n> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+    map ,t :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+    map ,v :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
   
-  " cscope
-    nnoremap <leader>fa :call cscope#findInteractive(expand('<cword>'))<CR>
-    nnoremap <leader>l :call ToggleLocationList()<CR>
-    " s: Find this C symbol
-    nnoremap  <leader>fs :call cscope#find('s', expand('<cword>'))<CR>
-    " g: Find this definition
-    nnoremap  <leader>fg :call cscope#find('g', expand('<cword>'))<CR>
-    " d: Find functions called by this function
-    nnoremap  <leader>fd :call cscope#find('d', expand('<cword>'))<CR>
-    " c: Find functions calling this function
-    nnoremap  <leader>fc :call cscope#find('c', expand('<cword>'))<CR>
-    " t: Find this text string
-    "nnoremap  <leader>ft :call cscope#find('t', expand('<cword>'))<CR>
-    "" e: Find this egrep pattern
-    "nnoremap  <leader>fe :call cscope#find('e', expand('<cword>'))<CR>
-    " f: Find this file
-    nnoremap  <leader>ff :call cscope#find('f', expand('<cword>'))<CR>
-    " i: Find files #including this file
-    nnoremap  <leader>fi :call cscope#find('i', expand('<cword>'))<CR>
+  " Smooth scoll
+    noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
+    noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+    noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
+    noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 
 """"""""""""""" general settings  """""""""""""""
   set showcmd
@@ -140,11 +101,9 @@ filetype plugin indent on    " required
   set linespace=0
   set whichwrap+=<,>,h,l
   " GUI status, tools, menu bar
-  "" syntax
-    syntax on
-    let g:tex_flavor = "latex"
-  "" theme: solarized options 
-  let g:solarized_termcolors=16 " For Ubuntu
+  syntax on " syntax
+  let g:tex_flavor = "latex"
+  let g:solarized_termcolors=16 "theme: solarized options
   set t_Co=16  " For Ubuntu
   set background=dark
   let g:solarized_visibility = "high"
@@ -153,85 +112,59 @@ filetype plugin indent on    " required
   "" GUI status
     set cursorline              " emphasize current line
     set statusline+=%{fugitive#statusline()} "  Git Hotness
-    set statusline+=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}   "状态行显示的内容  
+    set statusline+=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}
     set relativenumber
     set number " line number
     set laststatus=2 " Always display the status line
-  " fold and unfold
-    set foldenable      " 允许折叠  
-    "set foldmethod=manual   " 手动折叠 
+    set foldenable      " fold and unfold
+    "set foldmethod=manual   " 
     set foldmethod=indent 
     set foldcolumn=0
     set foldlevel=3 
-  " indent
-    set autoindent
+    set autoindent " indent
     set cindent
     set smartindent
     set backspace=2
-  " search and replace
-	set ignorecase smartcase
+	set ignorecase smartcase " search and replace
 	set hlsearch
 	set incsearch
-  "tab
-    set tabstop=4
+    set tabstop=4 "tab
     set softtabstop=4
     set shiftwidth=4
     set expandtab
     set smarttab
-  "split 
-	set splitbelow
+	set splitbelow "split 
 	set splitright
+
   " autocmd and file type
   autocmd BufNewFile,BufRead *.md set filetype=markdown "Markdown to HTML
   autocmd BufNewFile,BufRead *.md setlocal spell
-  autocmd BufNewFile,BufRead *.txt setlocal spell
   autocmd BufNewFile,BufRead *.tex setlocal spell
   autocmd BufNewFile,BufRead GITCOMMIT setlocal spell
-  filetype on
-  filetype plugin on
-  filetype indent on
-  au BufRead,BufNewFile *  setfiletype txt
+  autocmd BufRead,BufNewFile *  setfiletype txt
+  "autocmd BufNewFile,BufRead *.txt setlocal spell
 
-""""""""""""""" mapping """""""""""""""""""
-  " window command
-  map <C-h> <C-w>h
-  map <C-j> <C-w>j
-  map <C-k> <C-w>k
-  map <C-l> <C-w>l
-  " space and enter
+""""""""""""""" Customed Mapping mapping """""""""""""""""""
+  " Window command
+    map <C-h> <C-w>h
+    map <C-j> <C-w>j
+    map <C-k> <C-w>k
+    map <C-l> <C-w>l
+  " Space and enter
   map <Space> i<Space><ESC>
   map <Enter> o<ESC>
-  
+  " Insert mode  
   noremap! <C-F> <ESC> li
-  " F2 save
-  noremap <F2> <Esc>:w<CR>
-  inoremap <F2> <Esc>:w<CR>a
-  nnoremap gr :Ggrep <cword> <CR>
-  " auto complete
-  ":inoremap ( ()<ESC>i
-  ":inoremap ) <c-r>=ClosePair(')')<CR>
-  "":inoremap { {}<ESC>i
-  ":inoremap } <c-r>=ClosePair('}')<CR>
   "
-  ":inoremap [ []<ESC>i
-  ":inoremap ] <c-r>=ClosePair(']')<CR>
-  ":inoremap " ""<ESC>i
-  ":inoremap ' ''<ESC>i
-  " Smooth scoll
-  noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
-  noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
-  noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
-  noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
+  nnoremap ,g :Ggrep <cword> <CR>
 
 """""""""" Function""""""""""""""""
-  " Closepair
-  function! ClosePair(char)
-  	if getline('.')[col('.') - 1] == a:char
-  		return "\<Right>"
-  	else
-  		return a:char
-  	endif
+  " Update modified time Header 
+  map ,h :call TitleDet()<cr>'s
+  function! TitleDet()
+    exe "1,7s/\\(Last Modified\\s\\+:\\s\\+\\)\\[[^\\]]\\+\\]/\\1[" . strftime("%Y-%m-%d %H:%M") . "]/" 
   endfunction
+
   "Show number in tabline
   set tabline=%!MyTabLine()  " custom tab pages line
   function! MyTabLine()
@@ -302,9 +235,4 @@ filetype plugin indent on    " required
                   let s .= '%=%#TabLineFill#%999Xclose'
           endif
           return s
-  endfunction
-  " Update modified time Header 
-  map <F5> :call TitleDet()<cr>'s
-  function! TitleDet()
-    exe "1,7s/\\(Last Modified\\s\\+:\\s\\+\\)\\[[^\\]]\\+\\]/\\1[" . strftime("%Y-%m-%d %H:%M") . "]/" 
   endfunction
