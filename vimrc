@@ -14,6 +14,7 @@ call vundle#begin()
     Plugin 'VundleVim/Vundle.vim' " Plugin Manager
     Bundle 'altercation/vim-colors-solarized'
     Plugin 'tpope/vim-fugitive' " For Git
+    Plugin 'morhetz/gruvbox' " 
     Plugin 'ctrlpvim/ctrlp.vim' " For Navigation / Code Searching between files
     Plugin 'scrooloose/nerdtree'
     Plugin 'majutsushi/tagbar'
@@ -103,12 +104,17 @@ filetype plugin indent on    " required
   " GUI status, tools, menu bar
   syntax on " syntax
   let g:tex_flavor = "latex"
-  let g:solarized_termcolors=16 "theme: solarized options
-  set t_Co=16  " For Ubuntu
-  set background=dark
-  let g:solarized_visibility = "high"
-  let g:solarized_contrast = "high"
-  colorscheme solarized
+  let g:gruvbox_termcolors=256
+  let g:gruvbox_contrast_dark="hard"
+  set background=dark    " Setting dark mode
+  let g:gruvbox_italic=0
+  colorscheme gruvbox
+    "let g:solarized_termcolors=16 "theme: solarized options
+    "set t_Co=16  " For Ubuntu
+    "set background=dark
+    "let g:solarized_visibility = "high"
+    "let g:solarized_contrast = "high"
+    "colorscheme solarized
   "" GUI status
     set cursorline              " emphasize current line
     set statusline+=%{fugitive#statusline()} "  Git Hotness
