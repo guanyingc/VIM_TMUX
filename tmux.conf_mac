@@ -6,6 +6,7 @@ set-option -g status-keys vi    # keyboard layout, can be set as vi or emacs
 set-option -g status-right "#(date +%H:%M' ')"    #time
 set-option -g status-right-length 10 #
 #set-option -g status-utf8 on # support UTF-8 in status bar 
+set-option -g allow-rename off # don't rename windows automatically
   
 # this kind of configuration can saw with: show-window-options -g
 set-window-option -g mode-keys vi  #copy mode, can be set as vi or emacs   
@@ -54,7 +55,7 @@ bind c new-window -c "#{pane_current_path}"
 set -g status-interval 1
 set -g status-justify left # center align window list
 set -g status-left-length 30
-set -g status-left '#[fg=green](#S) #H#[default] |'
+#set -g status-left '#[fg=green](#S) #H#[default] |'
 set -g status-right-length 30
 set -g status-right '#[fg=colour228] #[fg=colour228]%a %m/%d/%Y %I:%M:%S%P'
 
