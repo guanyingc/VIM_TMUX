@@ -3,6 +3,7 @@ set-option -g base-index 1    # base index, default 0
 set-option -g display-time 5000 # duration time of prompt 
 set-option -g repeat-time 1000  # duration time of console activation
 set-option -g status-keys vi    # keyboard layout, can be set as vi or emacs 
+set-option -g status-right "#(date +%H:%M' ')"    #time
 set-option -g status-right-length 10 #
 #set-option -g status-utf8 on # support UTF-8 in status bar 
 set-option -g allow-rename off # don't rename windows automatically
@@ -48,11 +49,16 @@ bind-key -t vi-copy Enter copy-pipe "reattach-to-user-namespace pbcopy"
 # Bind ']' to use pbpaste
 bind ] run "reattach-to-user-namespace pbpaste | tmux load-buffer - && tmux paste-buffer"
 
+# Split window from the current path
+bind '"' split-window -c "#{pane_current_path}"
+bind % split-window -h -c "#{pane_current_path}"
+bind c new-window -c "#{pane_current_path}"
+
 # statusbar 
 set -g status-interval 1
 set -g status-justify left # center align window list
-set -g status-left-length 30
-set -g status-left '#[fg=green](#S) #H#[default] |'
+#set -g status-left-length 30
+#set -g status-left '#[fg=green](#S) #H#[default] |'
 set -g status-right-length 30
 set -g status-right '#[fg=colour228] #[fg=colour228]%a %m/%d/%Y %I:%M:%S%P'
 
@@ -69,10 +75,4 @@ set -g pane-border-bg black
 set -g pane-border-fg white
 set -g pane-active-border-bg black
 set -g pane-active-border-fg yellow
-
-# Split window from the current path
-bind '"' split-window -c "#{pane_current_path}"
-bind % split-window -h -c "#{pane_current_path}"
-bind c new-window -c "#{pane_current_path}"
-
 
