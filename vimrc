@@ -101,6 +101,7 @@ filetype plugin indent on    " required
   set iskeyword+=_,$,@,%,#,-
   set linespace=0
   set whichwrap+=<,>,h,l
+  set wildmode=longest,list " Tab autocompletion
   " GUI status, tools, menu bar
   syntax on " syntax
   let g:tex_flavor = "latex"
