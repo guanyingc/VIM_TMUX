@@ -138,7 +138,8 @@ filetype plugin indent on    " required
     set smarttab
 	set splitbelow "split 
 	set splitright
-
+    hi clear texItalStyle
+    hi clear texBoldStyle
   " autocmd and file type
   autocmd BufNewFile,BufRead *.md set filetype=markdown "Markdown to HTML
   autocmd BufNewFile,BufRead *.md setlocal spell
