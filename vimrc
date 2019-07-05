@@ -44,7 +44,7 @@ filetype plugin indent on    " required
 
   " autoHEADER
     let g:autoHEADER_auto_enable=0
-    let g:autoHEADER_default_author='Chen Guanying (GoYchen@foxmail.com)'
+    let g:autoHEADER_default_author='Chen Guanying (guanying2018@gmail.com)'
   
   " NERD tree
     let NERDChristmasTree=0
@@ -63,7 +63,7 @@ filetype plugin indent on    " required
     autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
   
   " ctrlp
-    set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.png,*.jpg,*.jpeg,*.gif " MacOSX/Linux
+    set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.png,*.jpg,*.jpeg,*.gif,*/data/*,*/logdir/*,*/Datasets/*,*/datasets/*,*/results/* " MacOSX/Linux
     let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
     nmap ,r :CtrlPClearAllCaches<cr>
     if executable('ag')
