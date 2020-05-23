@@ -26,6 +26,8 @@ call vundle#begin()
     Plugin 'jiangmiao/auto-pairs' " For Bracket Completion
     Plugin 'tpope/vim-unimpaired' " For Handy Shortcut
     Plugin 'shanzi/autoHEADER'
+    Plugin 'godlygeek/tabular'
+    Plugin 'plasticboy/vim-markdown'
 call vundle#end()            " required
 filetype plugin indent on    " required
 " :PluginList  :PluginInstall :PluginSearch foo  :PluginClean
