@@ -143,6 +143,7 @@ filetype plugin indent on    " required
     hi clear texItalStyle
     hi clear texBoldStyle
   " autocmd and file type
+  let vim_markdown_folding_disabled = 1
   autocmd BufNewFile,BufRead *.md set filetype=markdown "Markdown to HTML
   autocmd BufNewFile,BufRead *.md setlocal spell
   autocmd BufNewFile,BufRead *.tex setlocal spell
