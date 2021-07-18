@@ -18,6 +18,7 @@ call vundle#begin()
     Plugin 'ctrlpvim/ctrlp.vim' " For Navigation / Code Searching between files
     Plugin 'scrooloose/nerdtree'
     Plugin 'majutsushi/tagbar'
+    Plugin 'vim-scripts/taglist.vim'
     Plugin 'terryma/vim-smooth-scroll'
     Plugin 'MarcWeber/vim-addon-mw-utils' " For Vim-snippet
     Plugin 'tomtom/tlib_vim'
@@ -49,7 +50,7 @@ filetype plugin indent on    " required
 
   " autoHEADER
     let g:autoHEADER_auto_enable=0
-    let g:autoHEADER_default_author='Chen Guanying (GoYchen@foxmail.com)'
+    let g:autoHEADER_default_author='Chen Guanying'
   
   " NERD tree
     let NERDChristmasTree=0
@@ -92,6 +93,8 @@ filetype plugin indent on    " required
 
   " auto flake8
     autocmd FileType python map ,8 :call flake8#Flake8()<CR>
+    autocmd FileType html setlocal shiftwidth=2 softtabstop=2 expandtab
+
     "autocmd FileType python map <buffer> <F3> :call flake8#Flake8()<CR>
 
 
@@ -112,6 +115,7 @@ filetype plugin indent on    " required
   set iskeyword+=_,$,@,%,#,-
   set linespace=0
   set whichwrap+=<,>,h,l
+  set nofixeol
   " GUI status, tools, menu bar
   "" syntax
     syntax on
@@ -132,8 +136,8 @@ filetype plugin indent on    " required
     set number " line number
     set laststatus=2 " Always display the status line
     set foldenable      " fold and unfold
-    "set foldmethod=manual   " 
-    set foldmethod=indent 
+    set foldmethod=manual   " 
+    "set foldmethod=indent 
     set foldcolumn=0
     set foldlevel=3 
     set autoindent " indent
