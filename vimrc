@@ -87,6 +87,8 @@ filetype plugin indent on    " required
     noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
     noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 
+    " snipMate
+    let g:snipMate = { 'snippet_version' : 1  }
 """"""""""""""" general settings  """""""""""""""
   set showcmd
   set completeopt=preview,menu 
