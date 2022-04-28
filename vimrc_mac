@@ -176,8 +176,10 @@ filetype plugin indent on    " required
   map <Enter> o<ESC>
   " Insert mode  
   noremap! <C-F> <ESC> li
+  noremap! <C-c> <ESC>
   "
   nnoremap ,g :Ggrep <cword> <CR>
+  map ,m :w<CR>:make<CR><ESC>
 
 """""""""" Function""""""""""""""""
   " Update modified time Header 

@@ -127,8 +127,8 @@ filetype plugin indent on    " required
     set number " line number
     set laststatus=2 " Always display the status line
     set foldenable      " fold and unfold
-    "set foldmethod=manual   " 
-    set foldmethod=indent 
+    set foldmethod=manual   " 
+    "set foldmethod=indent 
     set foldcolumn=0
     set foldlevel=3 
     set autoindent " indent
@@ -148,6 +148,7 @@ filetype plugin indent on    " required
     hi clear texItalStyle
     hi clear texBoldStyle
   " autocmd and file type
+  let vim_markdown_folding_disabled = 1
   autocmd BufNewFile,BufRead *.md set filetype=markdown "Markdown to HTML
   autocmd BufNewFile,BufRead *.md setlocal spell
   autocmd BufNewFile,BufRead *.tex setlocal spell
@@ -166,8 +167,10 @@ filetype plugin indent on    " required
   map <Enter> o<ESC>
   " Insert mode  
   noremap! <C-F> <ESC> li
+  noremap! <C-c> <ESC>
   "
   nnoremap ,g :Ggrep <cword> <CR>
+  map ,m :w<CR>:make<CR><ESC>
 
 """""""""" Function""""""""""""""""
   " Update modified time Header 
