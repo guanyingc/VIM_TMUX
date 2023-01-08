@@ -5,3 +5,5 @@ mv .vim ~/
 cp vimrc ~/.vimrc
 cp tmux.conf ~/.tmux.conf
 tmux source ~/.tmux.conf
+
+cp scripts/myhttp.py ~/.myhttp.py
