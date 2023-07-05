@@ -28,6 +28,7 @@ call vundle#begin()
     Plugin 'shanzi/autoHEADER'
     Plugin 'godlygeek/tabular'
     Plugin 'plasticboy/vim-markdown'
+    Plugin 'webdevel/tabulous'
 call vundle#end()            " required
 filetype plugin indent on    " required
 " :PluginList  :PluginInstall :PluginSearch foo  :PluginClean
@@ -65,7 +66,7 @@ filetype plugin indent on    " required
     autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
   
   " ctrlp
-    set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.png,*.jpg,*.jpeg,*.gif,*/data/*,*/logdir/*,*/Datasets/*,*/datasets/*,*/results/* " MacOSX/Linux
+    set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.png,*.jpg,*.jpeg,*.gif,*/logdir/*,*/Datasets/*,*/results/* " MacOSX/Linux*/datasets/*
     let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
     let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
     nmap ,r :CtrlPClearAllCaches<cr>
