@@ -157,6 +157,7 @@ filetype plugin indent on    " required
   autocmd BufNewFile,BufRead *.tex setlocal spell
   autocmd BufNewFile,BufRead GITCOMMIT setlocal spell
   autocmd BufRead,BufNewFile *  setfiletype txt
+  set spelllang+=cjk
   "autocmd BufNewFile,BufRead *.txt setlocal spell
 
 """"""""""""""" Customed Mapping mapping """""""""""""""""""

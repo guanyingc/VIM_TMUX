@@ -18,7 +18,6 @@ call vundle#begin()
     Plugin 'ctrlpvim/ctrlp.vim' " For Navigation / Code Searching between files
     Plugin 'scrooloose/nerdtree'
     Plugin 'majutsushi/tagbar'
-    Plugin 'vim-scripts/taglist.vim'
     Plugin 'terryma/vim-smooth-scroll'
     Plugin 'MarcWeber/vim-addon-mw-utils' " For Vim-snippet
     Plugin 'tomtom/tlib_vim'
@@ -31,6 +30,7 @@ call vundle#begin()
     Plugin 'plasticboy/vim-markdown'
     Plugin 'nvie/vim-flake8'
     Plugin 'pixelneo/vim-python-docstring'
+    Plugin 'webdevel/tabulous'
     "Plugin 'heavenshell/vim-pydocstring', { 'do': 'make install'  }
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -50,7 +50,7 @@ filetype plugin indent on    " required
 
   " autoHEADER
     let g:autoHEADER_auto_enable=0
-    let g:autoHEADER_default_author='Chen Guanying'
+    let g:autoHEADER_default_author='Chen Guanying (guanying2018@gmail.com)'
   
   " NERD tree
     let NERDChristmasTree=0
@@ -69,7 +69,7 @@ filetype plugin indent on    " required
     autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
   
   " ctrlp
-    set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.png,*.jpg,*.jpeg,*.gif " MacOSX/Linux
+    set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.png,*.jpg,*.jpeg,*.gif,*/logdir/*,*/results/* " MacOSX/Linux
     let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
     let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
     nmap ,r :CtrlPClearAllCaches<cr>
@@ -118,8 +118,8 @@ filetype plugin indent on    " required
   set nofixeol
   " GUI status, tools, menu bar
   "" syntax
-    syntax on
-    let g:tex_flavor = "latex"
+  syntax on
+  let g:tex_flavor = "latex"
   "" theme: solarized options 
   "let g:solarized_termcolors=16 " For Ubuntu
   "set t_Co=16  " For Ubuntu
