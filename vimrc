@@ -1,8 +1,8 @@
 "--------------------------------------------------------------------------------
 "     File Name           :     .vimrc
-"     Created By          :     Chen Guanying (GoYchen@foxmail.com)
+"     Created By          :     Chen Guanying (guanying2018@gmail.com)
 "     Creation Date       :     [2017-01-07 17:39]
-"     Last Modified       :     [2018-01-07 19:59]
+"     Last Modified       :     [2024-03-26 09:24]
 "     Description         :      
 "--------------------------------------------------------------------------------
 " Vim configuration
