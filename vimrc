@@ -111,11 +111,12 @@ filetype plugin indent on    " required
   " GUI status, tools, menu bar
   syntax on " syntax
   let g:tex_flavor = "latex"
+  colorscheme gruvbox
   let g:gruvbox_termcolors=256
   let g:gruvbox_contrast_dark="hard"
-  set background=dark    " Setting dark mode
+  set background=dark    " setting dark mode
+  highlight Normal ctermbg=black guibg=black
   let g:gruvbox_italic=0
-  colorscheme gruvbox
     "let g:solarized_termcolors=16 "theme: solarized options
     "set t_Co=16  " For Ubuntu
     "set background=dark
